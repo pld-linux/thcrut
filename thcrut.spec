@@ -16,7 +16,7 @@ BuildRequires:	pcre-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-THC-RUT offers a wide range of network discovery utilities like arp
+THC-RUT offers a wide range of network discovery utilities like ARP
 lookup on an IP range, spoofed DHCP request, RARP, BOOTP, ICMP-ping,
 ICMP address mask request, OS fingerprinting, high-speed host
 discovery, ...
