@@ -1,0 +1,165 @@
+--- thcrut-1.2.5/configure.in.fix	2004-12-11 14:06:08.444231032 +0000
++++ thcrut-1.2.5/configure.in	2004-12-11 14:05:16.360149016 +0000
+@@ -153,7 +153,7 @@
+ dnl libnet_init_packet only available in < libnet-1.1.x
+ dnl AC_CHECK_LIB(net, libnet_init_packet,, AC_MSG_ERROR(We need libnet.
+ dnl Get libnet from http://www.packetfactory.net or try --with-[[libs,includes]]=DIR))
+-AC_CHECK_LIB(net, libnet_init_packet, [NET=yes], [NET=no])
++AC_CHECK_LIB(net1, libnet_init_packet, [NET=yes], [NET=no])
+ if test x"$NET" = x"no" -o x"$DIST" = x"yes"; then
+ 	AC_CONFIG_SUBDIRS(Libnet-1.0.2a)
+ 	THCRUT_SUBDIRS="$THCRUT_SUBDIRS Libnet-1.0.2a"
+@@ -164,8 +164,8 @@
+ 	dnl CFLAGS="`${srcdir}/Libnet-1.0.2a/libnet-config --cflags --defines | tr '\n' ' '` $CFLAGS"
+ 	dnl LIBS="`${srcdir}/Libnet-1.0.2a/libnet-config --libs` $LIBS"
+ else
+-	CFLAGS="`libnet-config --cflags --defines | tr '\n' ' '` $CFLAGS"
+-	LIBS="`libnet-config --libs` $LIBS"
++	CFLAGS="`libnet1-config --cflags --defines | tr '\n' ' '` $CFLAGS"
++	LIBS="`libnet1-config --libs` $LIBS"
+ fi
+ 
+ AC_CHECK_LIB(pcre, pcre_compile, [PCRE=yes], [PCRE=no])
+--- thcrut-1.2.5/src/icmp_main.c.fix	2004-12-11 14:17:37.944411072 +0000
++++ thcrut-1.2.5/src/icmp_main.c	2004-12-11 14:17:45.434272440 +0000
+@@ -11,7 +11,7 @@
+ #include <stdlib.h>
+ #include <stdarg.h>
+ #include <time.h>
+-#include <libnet.h>
++#include <libnet1.h>
+ #include "network.h"
+ #include "network_raw.h"
+ #include "thcrut.h"
+--- thcrut-1.2.5/src/arp_main.c.fix	2004-12-11 14:19:28.113662800 +0000
++++ thcrut-1.2.5/src/arp_main.c	2004-12-11 14:19:40.797734528 +0000
+@@ -15,7 +15,7 @@
+ #include <stdlib.h>
+ #include <stdarg.h>
+ #include <time.h>
+-#include <libnet.h>
++#include <libnet1.h>
+ #include "macvendor.h"
+ #include "thcrut.h"
+ #include "range.h"
+--- thcrut-1.2.5/src/thcrut_libnet.c.fix	2004-12-11 14:21:03.181210336 +0000
++++ thcrut-1.2.5/src/thcrut_libnet.c	2004-12-11 14:21:13.555633184 +0000
+@@ -2,7 +2,7 @@
+  * $Id$
+  */
+ 
+-#include <libnet.h>
++#include <libnet1.h>
+ 
+ #define int_ntoa(x) inet_ntoa(*((struct in_addr *)&(x)))
+ 
+--- thcrut-1.2.5/src/dhcp_main.c.fix	2004-12-11 14:22:07.822383384 +0000
++++ thcrut-1.2.5/src/dhcp_main.c	2004-12-11 14:26:37.901325144 +0000
+@@ -11,7 +11,7 @@
+ #include <stdlib.h>
+ #include <stdarg.h>
+ #include <time.h>
+-#include <libnet.h>
++#include <libnet1.h>
+ #include "thcrut.h"
+ #include "dhcp.h"
+ #include "thcrut_libnet.h"
+--- thcrut-1.2.5/src/packets.c.fix	2004-12-11 14:24:39.611307960 +0000
++++ thcrut-1.2.5/src/packets.c	2004-12-11 14:28:28.175560912 +0000
+@@ -3,7 +3,7 @@
+  */
+ 
+ #include "default.h"
+-#include <libnet.h>
++#include <libnet1.h>
+ #include <time.h>
+ #include "nmap_compat.h"
+ #include "fp.h"
+--- thcrut-1.2.5/src/discover_dispatch.c.fix	2004-12-11 14:24:28.604981176 +0000
++++ thcrut-1.2.5/src/discover_dispatch.c	2004-12-11 14:27:45.135104056 +0000
+@@ -7,7 +7,7 @@
+ #include <sys/time.h>
+ #include <time.h>
+ #include <pcap.h>
+-#include <libnet.h>
++#include <libnet1.h>
+ #include "default.h"
+ #include "thcrut.h"
+ #include "state.h"
+--- thcrut-1.2.5/src/discover_main.c.fix	2004-12-11 14:24:49.879746920 +0000
++++ thcrut-1.2.5/src/discover_main.c	2004-12-11 14:28:45.671901064 +0000
+@@ -5,7 +5,7 @@
+ #include <sys/time.h>
+ #include <time.h>
+ #include <pcap.h>
+-#include <libnet.h>
++#include <libnet1.h>
+ #include "default.h"
+ #include "thcrut.h"
+ #include "state.h"
+--- thcrut-1.2.5/src/arpg.c.fix	2004-12-11 14:24:59.104344568 +0000
++++ thcrut-1.2.5/src/arpg.c	2004-12-11 14:29:24.658974128 +0000
+@@ -9,7 +9,7 @@
+ #include <stdlib.h>
+ #include <sys/types.h>
+ #include <sys/wait.h>
+-#include <libnet.h>
++#include <libnet1.h>
+ #include "thcrut.h"
+ #include "arpg.h"
+ #include "thcrut_sig.h"
+--- thcrut-1.2.5/src/network_raw.c.fix	2004-12-11 14:25:08.603900416 +0000
++++ thcrut-1.2.5/src/network_raw.c	2004-12-11 14:29:45.183853872 +0000
+@@ -7,7 +7,7 @@
+ #include <stdarg.h>
+ #include <stdlib.h>
+ #include <errno.h>
+-#include <libnet.h>
++#include <libnet1.h>
+ #include "network_raw.h"
+ 
+ /*
+--- thcrut-1.2.5/src/thcrut.c.fix	2004-12-11 14:25:17.896487728 +0000
++++ thcrut-1.2.5/src/thcrut.c	2004-12-11 14:30:00.638504408 +0000
+@@ -84,7 +84,7 @@
+ #else
+ # include <sys/wait.h>
+ #endif
+-#include <libnet.h>
++#include <libnet1.h>
+ #include "thcrut.h"
+ #include "network_raw.h"
+ #include "dcd_icmp.h"
+--- thcrut-1.2.5/src/thcrut_libnet.h.fix	2004-12-11 14:25:28.302905712 +0000
++++ thcrut-1.2.5/src/thcrut_libnet.h	2004-12-11 14:30:12.458707464 +0000
+@@ -2,7 +2,7 @@
+  * $Id$
+  */
+ 
+-#include <libnet.h>
++#include <libnet1.h>
+ 
+ #ifndef __THCRUT_THCRUT_LIBNET_H__
+ #define __THCRUT_THCRUT_LIBNET_H__ 1
+--- thcrut-1.2.5/src/fp.h.fix	2004-12-11 14:25:39.557194800 +0000
++++ thcrut-1.2.5/src/fp.h	2004-12-11 14:30:27.060487656 +0000
+@@ -7,7 +7,7 @@
+ #ifndef __THCRUT_FP_H__
+ #define __THCRUT_FP_H__ 1
+ #include <pcre.h>
+-#include <libnet.h>
++#include <libnet1.h>
+ 
+ /*
+  * We store category<->testnr value in one tuple.
+--- thcrut-1.2.5/src/thcrut.h.fix	2004-12-11 14:25:51.500379160 +0000
++++ thcrut-1.2.5/src/thcrut.h	2004-12-11 14:30:42.427151568 +0000
+@@ -4,7 +4,7 @@
+ #include <sys/types.h>
+ #include <unistd.h>
+ #include <pcap.h>
+-#include <libnet.h>
++#include <libnet1.h>
+ #include "state.h"
+ #include "nmap_compat.h"
+ #include "fp.h"
