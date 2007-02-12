@@ -1,5 +1,5 @@
 Summary:	THC-RUT gathers informations from local and remote networks
-Summary(pl.UTF-8):   THC-RUT - zbieranie informacji z sieci zdalnych i lokalnych
+Summary(pl.UTF-8):	THC-RUT - zbieranie informacji z sieci zdalnych i lokalnych
 Name:		thcrut
 Version:	1.2.5
 Release:	1
