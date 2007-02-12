@@ -1,5 +1,5 @@
 Summary:	THC-RUT gathers informations from local and remote networks
-Summary(pl):	THC-RUT - zbieranie informacji z sieci zdalnych i lokalnych
+Summary(pl.UTF-8):   THC-RUT - zbieranie informacji z sieci zdalnych i lokalnych
 Name:		thcrut
 Version:	1.2.5
 Release:	1
@@ -21,10 +21,10 @@ lookup on an IP range, spoofed DHCP request, RARP, BOOTP, ICMP-ping,
 ICMP address mask request, OS fingerprinting, high-speed host
 discovery, ...
 
-%description -l pl
-THC-RUT oferuje takie narzêdzia do rozpoznawania sieci jak zapytania
-ARP zakresu IP, spoofowane ¿±dania DHCP, RARP, BOOTP, ICMP-ping,
-ICMP, OS fingerprinting, szybkie wykrywanie hostów...
+%description -l pl.UTF-8
+THC-RUT oferuje takie narzÄ™dzia do rozpoznawania sieci jak zapytania
+ARP zakresu IP, spoofowane Å¼Ä…dania DHCP, RARP, BOOTP, ICMP-ping,
+ICMP, OS fingerprinting, szybkie wykrywanie hostÃ³w...
 
 %prep
 %setup -q
