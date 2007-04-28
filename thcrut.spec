@@ -12,6 +12,7 @@ URL:		http://thc.org/thc-rut/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libnet1-devel
+BuildRequires:	libpcap-devel
 BuildRequires:	pcre-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
